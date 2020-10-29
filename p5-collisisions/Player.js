@@ -26,9 +26,16 @@ class Player {
       isTouchingOnTop &&
       isTouchingOnBottom
     ) {
-      console.log("ROUCHING");
+      return true;
       // noLoop();
     }
+    return false;
+  }
+  randomizePosition() {
+    const randomX = Math.floor(Math.random() * WIDTH - this.width);
+    const randomY = Math.floor(Math.random() * WIDTH - this.height);
+    this.leftSide = randomX;
+    this.topSide = randomY;
   }
 
   moveLeft(steps) {

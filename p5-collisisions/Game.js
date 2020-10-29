@@ -34,7 +34,8 @@ class Game {
     if (keyIsDown(68)) {
       this.player2.moveRight(5);
     }
-
-    this.player1.collisionCheck(this.player2);
+    if (this.player1.collisionCheck(this.player2)) {
+      this.player2.randomizePosition();
+    }
   }
 }
