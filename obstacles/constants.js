@@ -1,0 +1,1 @@
+const WIDTH = 400;
