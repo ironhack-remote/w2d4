@@ -1,6 +1,8 @@
 const game = new Game();
 
-function preload() {}
+function preload() {
+  pic = loadImage("./Andre_final.png");
+}
 
 function setup() {
   createCanvas(WIDTH, WIDTH);

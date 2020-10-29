@@ -21,6 +21,6 @@ class Player {
   }
 
   draw() {
-    rect(this.x, this.y, this.width, this.height);
+    image(pic, this.x, this.y, this.width, this.height);
   }
 }
