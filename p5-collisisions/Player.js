@@ -6,14 +6,28 @@ class Player {
     this.topSide = topSide;
   }
 
-  collisionCheck(player) {
+  collisionCheck(otherPlayer) {
     const rightSide = this.leftSide + this.width;
-    const isTouchingOnLeft = rightSide >= player.leftSide;
+    const otherPlayerRightSide = otherPlayer.leftSide + otherPlayer.width;
+    const bottomSide = this.topSide + this.height;
+    const otherPlayerBottomSide = otherPlayer.topSide + otherPlayer.height;
 
-    const isTouchingOnRight = this.leftSide <= player.leftSide + player.width;
+    const isTouchingOnLeft = rightSide >= otherPlayer.leftSide;
 
-    if (isTouchingOnLeft && isTouchingOnRight) {
+    const isTouchingOnRight = this.leftSide <= otherPlayerRightSide;
+
+    const isTouchingOnTop = bottomSide >= otherPlayer.topSide;
+
+    const isTouchingOnBottom = this.topSide <= otherPlayerBottomSide;
+
+    if (
+      isTouchingOnLeft &&
+      isTouchingOnRight &&
+      isTouchingOnTop &&
+      isTouchingOnBottom
+    ) {
       console.log("ROUCHING");
+      // noLoop();
     }
   }
 
@@ -32,17 +46,17 @@ class Player {
   }
 
   moveUp(steps) {
-    if (thistopSide <= 0) {
+    if (this.topSide <= 0) {
       return;
     }
-    thistopSide -= steps;
+    this.topSide -= steps;
   }
 
   moveDown(steps) {
     if (this.topSide >= WIDTH - this.height) {
       return;
     }
-    thistopSide += steps;
+    this.topSide += steps;
   }
 
   draw() {
