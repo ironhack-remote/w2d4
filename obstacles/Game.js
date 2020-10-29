@@ -24,6 +24,8 @@ class Game {
       isTouchingOnTop &&
       isTouchingOnBottom
     ) {
+      console.log("CONTACT");
+      noLoop();
       return true;
       // noLoop();
     }
@@ -40,16 +42,19 @@ class Game {
       this.player.moveRight(5);
     }
 
-    if (frameCount % (60 * 5) === 0) {
+    if (frameCount % (60 * 1) === 0) {
       this.allObstacles.push(new Obstacle());
     }
 
-    this.allObstacles.forEach((obstacle) => obstacle.draw());
-
-    if (frameCount % (60 * 3) === 0) {
+    if (frameCount % 10 === 0) {
       this.allObstacles.forEach((obstacle) => {
         obstacle.moveDown();
       });
     }
+    this.allObstacles.forEach((obstacle) => {
+      this.collisionCheck(this.player, obstacle);
+    });
+
+    this.allObstacles.forEach((obstacle) => obstacle.draw());
   }
 }

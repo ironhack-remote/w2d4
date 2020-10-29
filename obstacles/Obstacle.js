@@ -8,7 +8,7 @@ class Obstacle {
 
   moveDown() {
     console.log("MOVING DOWN");
-    this.y += 50;
+    this.y += 5;
   }
 
   draw() {

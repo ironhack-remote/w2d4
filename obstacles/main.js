@@ -11,3 +11,10 @@ function draw() {
   background("cyan");
   game.draw();
 }
+
+const button = document.querySelector("button");
+
+button.onclick = () => {
+  game.allObstacles = [];
+  loop();
+};
