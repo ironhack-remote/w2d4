@@ -1,15 +1,16 @@
 class Player {
-  constructor(x, y) {
+  constructor(leftSide, topSide) {
     this.height = 30;
     this.width = 10;
-    this.x = x;
-    this.y = y;
+    this.leftSide = leftSide;
+    this.topSide = topSide;
   }
 
   collisionCheck(player) {
-    const isTouchingOnLeft = this.x + this.width >= player.x;
+    const rightSide = this.leftSide + this.width;
+    const isTouchingOnLeft = rightSide >= player.leftSide;
 
-    const isTouchingOnRight = this.x <= player.x + player.width;
+    const isTouchingOnRight = this.leftSide <= player.leftSide + player.width;
 
     if (isTouchingOnLeft && isTouchingOnRight) {
       console.log("ROUCHING");
@@ -17,34 +18,34 @@ class Player {
   }
 
   moveLeft(steps) {
-    if (this.x <= 0) {
+    if (this.leftSide <= 0) {
       return;
     }
-    this.x -= steps;
+    this.leftSide -= steps;
   }
 
   moveRight(steps) {
-    if (this.x >= WIDTH - this.width) {
+    if (this.leftSide >= WIDTH - this.width) {
       return;
     }
-    this.x += steps;
+    this.leftSide += steps;
   }
 
   moveUp(steps) {
-    if (this.y <= 0) {
+    if (thistopSide <= 0) {
       return;
     }
-    this.y -= steps;
+    thistopSide -= steps;
   }
 
   moveDown(steps) {
-    if (this.y >= WIDTH - this.height) {
+    if (this.topSide >= WIDTH - this.height) {
       return;
     }
-    this.y += steps;
+    thistopSide += steps;
   }
 
   draw() {
-    rect(this.x, this.y, this.width, this.height);
+    rect(this.leftSide, this.topSide, this.width, this.height);
   }
 }
